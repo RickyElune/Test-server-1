@@ -1,0 +1,74 @@
+[
+    {
+        "MONTH": "JAN",
+        "ELECTRICITY (kWh)": 3545,
+        "WATER (t)": 3545,
+        "GHG (kg)": 3545
+    },
+    {
+        "MONTH": "FEB",
+        "ELECTRICITY (kWh)": 2674,
+        "WATER (t)": 2674,
+        "GHG (kg)": 2674
+    },
+    {
+        "MONTH": "MAR",
+        "ELECTRICITY (kWh)": 4764,
+        "WATER (t)": 4764,
+        "GHG (kg)": 4764
+    },
+    {
+        "MONTH": "APR",
+        "ELECTRICITY (kWh)": 1926,
+        "WATER (t)": 1926,
+        "GHG (kg)": 1926
+    },
+    {
+        "MONTH": "MAY",
+        "ELECTRICITY (kWh)": 3583,
+        "WATER (t)": 3583,
+        "GHG (kg)": 3583
+    },
+    {
+        "MONTH": "JUN",
+        "ELECTRICITY (kWh)": 6726,
+        "WATER (t)": 6726,
+        "GHG (kg)": 6726
+    },
+    {
+        "MONTH": "JUL",
+        "ELECTRICITY (kWh)": 5426,
+        "WATER (t)": 5426,
+        "GHG (kg)": 5426
+    },
+    {
+        "MONTH": "AUG",
+        "ELECTRICITY (kWh)": 4972,
+        "WATER (t)": 4972,
+        "GHG (kg)": 4972
+    },
+    {
+        "MONTH": "SEP",
+        "ELECTRICITY (kWh)": 4216,
+        "WATER (t)": 4216,
+        "GHG (kg)": 4216
+    },
+    {
+        "MONTH": "OCT",
+        "ELECTRICITY (kWh)": 6684,
+        "WATER (t)": 6684,
+        "GHG (kg)": 6684
+    },
+    {
+        "MONTH": "NOV",
+        "ELECTRICITY (kWh)": 3426,
+        "WATER (t)": 3426,
+        "GHG (kg)": 3426
+    },
+    {
+        "MONTH": "DEC",
+        "ELECTRICITY (kWh)": 5811,
+        "WATER (t)": 5811,
+        "GHG (kg)": 5811
+    }
+]

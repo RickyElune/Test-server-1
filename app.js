@@ -8,6 +8,8 @@ var serveIndex = require("serve-index");
 const multer = require("multer");
 const cors = require("cors");
 
+var esgReportingData = require("./public/json/esgReporting.json");
+
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
@@ -53,9 +55,19 @@ app.post("/single", upload.single("sheet"), async (req, res) => {
         );
     }
 
+    let sheetData = worksheets.Sheet1;
+    for (const e of sheetData) {
+        delete e.__EMPTY;
+    }
+
     // Show the data as JSON
-    console.log("json:\n", JSON.stringify(worksheets.Sheet1), "\n\n");
-    res.send("Single FIle upload success");
+    console.log("json:\n", JSON.stringify(sheetData), "\n\n");
+
+    esgReportingData.esgreport.h23303a21.a21.electricity = sheetData[0];
+    esgReportingData.esgreport.h23303a22.a22.water = sheetData[1];
+    esgReportingData.esgreport.h23301a12.a12.ghg = sheetData[2];
+
+    res.send(esgReportingData);
 });
 
 // Multiple Files Route Handler
