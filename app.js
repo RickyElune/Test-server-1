@@ -30,12 +30,21 @@ app.use("/sheets", serveIndex(__dirname + "/public/sheets"));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
+const kpiMap = {
+    a12: "ghg",
+    a13: "hazardousProduce",
+    a14: "nonHazardousProduce",
+    a21: "electricity",
+    a22: "water",
+    a25: "packagingMaterial",
+};
+
 const fileStorageEngine = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, "./public/sheets"); //important this is a direct path fron our current file to storage location
     },
     filename: (req, file, cb) => {
-        cb(null, file.originalname);
+        cb(null, Date.now() + "--" + file.originalname);
     },
 });
 
@@ -56,16 +65,30 @@ app.post("/single", upload.single("sheet"), async (req, res) => {
     }
 
     let sheetData = worksheets.Sheet1;
-    for (const e of sheetData) {
-        delete e.__EMPTY;
-    }
+    // for (const e of sheetData) {
+    //     delete e.environmental;
+    // }
 
     // Show the data as JSON
     console.log("json:\n", JSON.stringify(sheetData), "\n\n");
 
-    esgReportingData.esgreport.h23303a21.a21.electricity = sheetData[0];
-    esgReportingData.esgreport.h23303a22.a22.water = sheetData[1];
-    esgReportingData.esgreport.h23301a12.a12.ghg = sheetData[2];
+    //  insert and update asset
+    for (const kpiEntries of sheetData) {
+        let kpi = kpiEntries.environmental
+            .slice(0, 4)
+            .toLowerCase()
+            .replace(".", "");
+
+        let kpiName = kpiMap[kpi];
+
+        //  month with updated data
+        const kpiMonths = Object.keys(kpiEntries).slice(1);
+
+        for (const kpiMonth of kpiMonths) {
+            esgReportingData.esgreport[kpi][kpiName][kpiMonth] =
+                kpiEntries[kpiMonth];
+        }
+    }
 
     res.send(esgReportingData);
 });
